@@ -1,0 +1,39 @@
+# --- Byte-compiled / optimized / DLL files ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Environments ---
+.venv/
+venv/
+ENV/
+env/
+active_env/
+
+# --- Secrets & Configuration ---
+.env
+*.env
+# (Mas permitimos o exemplo para documentação)
+!.env.example
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Docker ---
+# Geralmente não ignoramos Dockerfiles, mas ignoramos dados de volumes locais
+# se você criou alguma pasta para persistir dados fora do container
+mongodb_data/
+
+# --- OS generated files ---
+.DS_Store
+Thumbs.db
+
+# --- Testing ---
+.pytest_cache/
+nosetests.xml
+coverage.xml
+htmlcov/
+.codecov.yml
