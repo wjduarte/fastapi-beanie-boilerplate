@@ -31,7 +31,7 @@ app/
 ├── schemas/          # Schemas de validação (Pydantic)
 ├── services/         # Regras de negócio
 └── app.py            # Ponto de entrada e Lifespan
-'''
+```
 
 
 ## 🔐 Funcionalidades Principais
@@ -73,6 +73,7 @@ cd todofast-api
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 ### 2️⃣ Variáveis de Ambiente
 
@@ -83,6 +84,7 @@ PROJECT_NAME="TODOFast API"
 MONGO_CONNECTION_STRING="mongodb://localhost:27017/todofast"
 JWT_SECRET_KEY="sua_chave_secreta_access"
 JWT_REFRESH_SECRET_KEY="sua_chave_secreta_refresh"
+```
 
 ### 3️⃣ Executar o Servidor
 
@@ -90,6 +92,7 @@ Execute o comando abaixo para iniciar a aplicação:
 
 ```bash
 uvicorn app.app:app --reload
+```
 
 Acesse a documentação interativa em:
 
