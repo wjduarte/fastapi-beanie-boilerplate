@@ -31,6 +31,7 @@ app/
 ├── schemas/          # Schemas de validação (Pydantic)
 ├── services/         # Regras de negócio
 └── app.py            # Ponto de entrada e Lifespan
+'''
 
 
 ## 🔐 Funcionalidades Principais
