@@ -1,77 +1,111 @@
-🚀 TODOFast API - Pydantic V2 & Beanie ODM
-Esta é uma API de gerenciamento de tarefas (ToDo) de alta performance, construída com foco em escalabilidade, segurança e práticas modernas de desenvolvimento Python. O projeto utiliza a arquitetura assíncrona do FastAPI integrada ao MongoDB através do Beanie ODM.
+# 🚀 TODOFast API - Pydantic V2 & Beanie ODM
 
-🛠 Tecnologias e Padrões
-FastAPI: Framework web moderno e de alta performance.
+API de gerenciamento de tarefas (ToDo) de alta performance, construída com foco em **escalabilidade**, **segurança** e **boas práticas modernas em Python**.
 
-Pydantic V2: Validação de dados e serialização extremamente rápida.
+O projeto utiliza arquitetura assíncrona com **FastAPI**, integrada ao **MongoDB** via **Beanie ODM**.
 
-Beanie ODM: Mapeamento de documentos MongoDB baseado em tipos Python.
+---
 
-Motor: Driver assíncrono para MongoDB.
+## 🛠 Tecnologias e Padrões
 
-JWT (JSON Web Tokens): Autenticação robusta com Access e Refresh Tokens.
+- **FastAPI**: Framework web moderno e de alta performance.
+- **Pydantic V2**: Validação e serialização extremamente rápidas.
+- **Beanie ODM**: Mapeamento de documentos MongoDB baseado em tipos Python.
+- **Motor**: Driver assíncrono para MongoDB.
+- **JWT (JSON Web Tokens)**: Autenticação com Access e Refresh Tokens.
+- **Argon2**: Hash de senhas de última geração para máxima segurança.
 
-Argon2: Algoritmo de hash de senhas de última geração para segurança máxima.
+---
 
-🏗 Arquitetura do Projeto
-O projeto segue uma estrutura modular para facilitar a manutenção e testes:
+## 🏗 Arquitetura do Projeto
 
+Estrutura modular para facilitar manutenção, escalabilidade e testes:
+
+```text
 app/
 ├── api/              # Camada de entrada (Handlers e Rotas)
 │   ├── api_v1/       # Versão 1 da API
-│   └── auth/         # Lógica de autenticação e JWT
+│   └── auth/         # Autenticação e JWT
 ├── core/             # Configurações globais e segurança
 ├── models/           # Modelos de dados (Beanie Documents)
-├── schemas/          # Esquemas de validação (Pydantic Models)
-├── services/         # Regras de negócio e lógica de persistência
-└── app.py            # Ponto de entrada e configuração do Lifespan
+├── schemas/          # Schemas de validação (Pydantic)
+├── services/         # Regras de negócio
+└── app.py            # Ponto de entrada e Lifespan
 
-🔐 Funcionalidades Principais
-Auth System: Registro de usuários, Login via OAuth2 e renovação de acesso via Refresh Token.
 
-Task Management: CRUD completo de tarefas vinculado ao usuário logado (Object-Level Authorization).
+## 🔐 Funcionalidades Principais
 
-Smart Search: Filtros de busca por título (Regex Case-Insensitive) e status.
+### 🔑 Autenticação e Segurança
+- Registro de usuários
+- Login via OAuth2 (JWT)
+- Renovação de acesso com Refresh Token
+- Hash de senhas com Argon2
 
-Automated Docs: Documentação interativa via Swagger UI e ReDoc.
+### 📝 Gerenciamento de Tarefas
+- CRUD completo de tarefas
+- Tarefas vinculadas ao usuário autenticado
+- Autorização em nível de objeto (Object-Level Authorization)
 
-🚀 Como Rodar o Projeto
-Pré-requisitos
-Python 3.10+
+### 🔎 Busca Inteligente
+- Filtro por título (Regex Case-Insensitive)
+- Filtro por status da tarefa
 
-MongoDB rodando localmente ou via Atlas.
+### 📄 Documentação Automática
+- Swagger UI
+- ReDoc
 
-1. Clonar e Instalar
+---
 
+## 🚀 Como Rodar o Projeto
+
+### 📋 Pré-requisitos
+- Python **3.10+**
+- MongoDB local ou MongoDB Atlas
+
+---
+
+### 1️⃣ Clonar e Instalar
+
+```bash
 git clone https://github.com/seu-usuario/todofast-api.git
 cd todofast-api
 python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-2. Variáveis de Ambiente
+### 2️⃣ Variáveis de Ambiente
 
-Crie um arquivo .env na raiz do projeto seguindo o modelo:
+Crie um arquivo `.env` na raiz do projeto seguindo o modelo abaixo:
 
+```env
 PROJECT_NAME="TODOFast API"
 MONGO_CONNECTION_STRING="mongodb://localhost:27017/todofast"
-JWT_SECRET_KEY="sua_chave_secreta_para_access_token"
-JWT_REFRESH_SECRET_KEY="outra_chave_secreta_para_refresh"
+JWT_SECRET_KEY="sua_chave_secreta_access"
+JWT_REFRESH_SECRET_KEY="sua_chave_secreta_refresh"
 
-3. Executar o Servidor
+### 3️⃣ Executar o Servidor
 
+Execute o comando abaixo para iniciar a aplicação:
+
+```bash
 uvicorn app.app:app --reload
 
-Acesse a documentação em: http://127.0.0.1:8000/docs
+Acesse a documentação interativa em:
 
-📖 Endpoints Principais
+- **Swagger UI**: http://127.0.0.1:8000/docs
 
-Método,Endpoint,Descrição
-POST,/api/v1/auth/login,Autentica usuário e retorna tokens.
-POST,/api/v1/auth/refresh,Gera novo access_token via refresh_token.
-POST,/api/v1/users/create,Registra um novo usuário.
-GET,/api/v1/tasks/,Lista tarefas do usuário com filtros.
-POST,/api/v1/tasks/create,Cria uma nova tarefa vinculada ao usuário.
+---
+
+## 📖 Endpoints Principais
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/api/v1/auth/login` | Autentica usuário e retorna tokens |
+| POST | `/api/v1/auth/refresh` | Gera novo access token via refresh token |
+| POST | `/api/v1/users/create` | Registra um novo usuário |
+| GET | `/api/v1/tasks/` | Lista tarefas do usuário com filtros |
+| POST | `/api/v1/tasks/create` | Cria uma nova tarefa vinculada ao usuário |
+
+---
 
 Desenvolvido com ☕ e foco em excelência técnica.
