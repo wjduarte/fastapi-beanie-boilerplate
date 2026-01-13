@@ -23,8 +23,6 @@ active_env/
 *.swo
 
 # --- Docker ---
-# Geralmente não ignoramos Dockerfiles, mas ignoramos dados de volumes locais
-# se você criou alguma pasta para persistir dados fora do container
 mongodb_data/
 
 # --- OS generated files ---

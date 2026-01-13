@@ -30,4 +30,4 @@ class User(Document):
         return await cls.find_one(cls.email == email)
     
     class Settings:
-        name = "users" # Nome da coleção corrigido para "users"
+        name = "users" # Nome da coleção no MongoDB

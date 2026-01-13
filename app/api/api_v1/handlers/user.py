@@ -16,7 +16,7 @@ async def create_user(data: UserAuth):
             detail="The user with this email already exists."
         )
     
-    # 2. Cria o novo usuário (Pydantic V2 cuidará da conversão de tipos)
+    # 2. Cria o usuário
     user = User(
         username=data.username,
         email=data.email,
@@ -35,8 +35,3 @@ async def get_me(user: User = Depends(get_current_user)):
     """
     return user
 
-# Rota adicional para listar todos os usuários (apenas para fins de teste)
-# @user_router.get("/", response_model=list[UserDetail])
-# async def list_users():
-#     users = await User.find_all().to_list()
-#     return users

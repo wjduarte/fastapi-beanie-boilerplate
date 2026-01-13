@@ -6,7 +6,7 @@ from typing import Optional
 class TaskCreate(BaseModel):
     title: str = Field(
         ..., 
-        min_length=3, 
+        min_length=3,
         max_length=100,
         description="O título curto e claro da tarefa",
         examples=["Comprar leite e pão"]
@@ -17,13 +17,19 @@ class TaskCreate(BaseModel):
         description="Descrição detalhada do que precisa ser feito",
         examples=["Ir ao supermercado x e garantir que o leite seja desnatado." ]
     )
-
+    category: Optional[UUID] = Field(
+        None,
+        description="ID da categoria (opcional)",
+        examples=["123e4567-e89b-12d3-a456-426614174000"]
+    )
+        
 class TaskOut(BaseModel):
     id: UUID = Field(..., validation_alias="_id", serialization_alias="id")
     title: str
     description: str
     status: bool
     created_at: datetime
+    category: Optional[UUID] = None
     
     model_config = ConfigDict(
         from_attributes=True, 
@@ -43,3 +49,4 @@ class TaskUpdate(BaseModel):
     title: Optional[str] = Field(None, min_length=3, max_length=100)
     description: Optional[str] = Field(None, max_length=500)
     status: Optional[bool] = None
+    category: Optional[UUID] = None

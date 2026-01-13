@@ -8,6 +8,7 @@ from app.api.api_v1.router import router as api_router
 from app.core.config import settings
 from app.models.task_model import Task
 from app.models.user_model import User
+from app.models.category_model import Category
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,7 +16,7 @@ async def lifespan(app: FastAPI):
     db_client = AsyncIOMotorClient(settings.MONGO_CONNECTION_STRING)
     await init_beanie(
         database=db_client.get_default_database(),
-        document_models=[User, Task] 
+        document_models=[User, Task, Category]  # Registrando o modelo Category
     )
     yield
     db_client.close()

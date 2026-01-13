@@ -17,14 +17,14 @@ class UserDetail(BaseModel):
     last_name: Optional[str] = None
     created_at: datetime
 
-    # MIGRADO PARA V2:
+    # Configuração para permitir a leitura de atributos do ORM
     model_config = ConfigDict(
-        from_attributes=True, # Substitui orm_mode
+        from_attributes=True, # Permite ler atributos do ORM
         populate_by_name=True # Permite o uso de 'id' em vez de '_id' na saída
     )
 class Token(BaseModel):
     access_token: str
-    refresh_token: str  # Adicionado para validar o novo retorno
+    refresh_token: str  # Novo campo para o token de atualização
     token_type: str
 
     model_config = ConfigDict(from_attributes=True)

@@ -9,7 +9,7 @@ from app.core.security import hash_password, verify_password
 class UserService:
     @staticmethod
     async def create_user(data: UserAuth) -> User:
-        # Busca otimizada usando a model Beanie
+        # Verifica se o usuário já existe pelo e-mail
         user_exists = await User.find_one(User.email == data.email)
         if user_exists:            
             raise ValueError("Usuário com este e-mail já existe")

@@ -46,11 +46,11 @@ async def refresh_token(refresh_token: str = Body(..., embed=True)):
         )
         user_id = payload.get("sub")
         if not user_id:
-            raise HTTPException(status_code=401, detail="Token inválido")
+            raise HTTPException(status_code=401, detail="Invalid token")
             
         user = await User.get(user_id)
         if not user:
-            raise HTTPException(status_code=404, detail="Usuário não encontrado")
+            raise HTTPException(status_code=404, detail="User not found")
             
         return {
             "access_token": create_access_token(data={"sub": str(user.id)}),
